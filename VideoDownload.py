@@ -95,11 +95,21 @@ def main():
 							query = '{} (Official Music Video)'.format(currentSongName)
 							print('\nLooking on YouTube for: ' + query)
 
+
 							# finds the top 2 video URLs from YouTube
 							youtube = VideosSearch(query, limit = 2).result()
-							url = youtube['result'][0]['link']
-							url2 = youtube['result'][1]['link']
-							videoTitle = youtube['result'][0]['title']
+							results = youtube.get('result', [])
+							if len(results) == 0:
+								print('No YouTube results found for: ' + query)
+								erroredSongs.append(currentSongName + ' (no results)')
+								erroredSongNames.append(currentSongName)
+								continue
+							url = results[0]['link']
+							videoTitle = results[0].get('title', 'Unknown Title')
+							if len(results) > 1:
+								url2 = results[1]['link']
+							else:
+								url2 = None
 							print("Search success. Now downloading: " + videoTitle)
 
 							# downloads the song
@@ -113,9 +123,21 @@ def main():
 								try:
 									download_video(ydl, url)
 								except Exception as e:
-									print('Error while downloading: ' + str(e) + '. Trying second video')
-									# Try second video if first video errors
-									download_video(ydl, url2)
+									print('Error while downloading: ' + str(e))
+									if url2:
+										print('Trying second video')
+										try:
+											download_video(ydl, url2)
+										except Exception as e2:
+											print('Error while downloading second video: ' + str(e2))
+											erroredSongs.append(videoTitle + ' (both downloads failed)')
+											erroredSongNames.append(currentSongName)
+											continue
+									else:
+										print('No second video to try.')
+										erroredSongs.append(videoTitle + ' (download failed)')
+										erroredSongNames.append(currentSongName)
+										continue
 							with open('song.ini') as songCheck:
 								# check if the ini file contains unexpected phase shift converter text
 								if '//Converted' in songCheck.read():

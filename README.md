@@ -27,6 +27,12 @@ This program has also been designed to run multiple times on the same songs dire
 
 Should any songs run into errors, this will be displayed once the program has finished running.
 
+Requirements
+------------
+I found that I needed to downgrade my http client to get this project to work (see requirements.txt). To manage the dependencies, I used `pyenv`.
+* [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation)
+* [EJS solver](https://github.com/yt-dlp/yt-dlp/wiki/EJS) (requires `deno`, and I switched requirements.txt to include default reqs)
+
 Usage
 -------
 I found that I needed to downgrade my http client to get this project to work (see requirements.txt). To manage the dependencies, I used `pyenv`.
