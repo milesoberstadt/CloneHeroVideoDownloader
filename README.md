@@ -37,7 +37,7 @@ To create the virtual env:
 3. Create the virtualenv `pyenv virtualenv clone-hero-video-dl`
 4. Activate the environement, you'll need to do this every time you start a new terminal `pyenv activate clone-hero-video-dl`
 5. One time install of the project dependencies `pip install -r requirements.txt`
-6. Run the thang `python VideoDownload.py`
+6. Run the thang `python VideoDownload.py --mode [720p|1080p|replace] --songs /path/to/your/Songs`
 
 
 Notes/FAQ
