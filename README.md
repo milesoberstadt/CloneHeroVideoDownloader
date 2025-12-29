@@ -29,15 +29,16 @@ Should any songs run into errors, this will be displayed once the program has fi
 
 Usage
 -------
-Run as Python script:
-1. Clone this repository into your Clone Hero directory, one level above your Songs folder
-2. Install required dependencies from requirements.txt via cmd/Terminal (```python install -r requirements.txt```)
-3. Run VideoDownload.py via cmd/Terminal (```python VideoDownload.py```)
-   
-Run as standalone .exe:
-1. [Download the latest release](https://github.com/stripedew/CloneHeroVideoDownloader/releases/latest)
-2. Place VideoDownload.exe in your Clone Hero directory (default is C:\Users\XyourusernamehereX\Documents\Clone Hero, one level above your Songs folder)
-3. Run VideoDownload.exe
+I found that I needed to downgrade my http client to get this project to work (see requirements.txt). To manage the dependencies, I used `pyenv`.
+
+To create the virtual env:
+1. Clone this repository
+2. [Install pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation)
+3. Create the virtualenv `pyenv virtualenv clone-hero-video-dl`
+4. Activate the environement, you'll need to do this every time you start a new terminal `pyenv activate clone-hero-video-dl`
+5. One time install of the project dependencies `pip install -r requirements.txt`
+6. Run the thang `python VideoDownload.py`
+
 
 Notes/FAQ
 -------

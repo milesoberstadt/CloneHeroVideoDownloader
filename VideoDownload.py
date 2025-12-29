@@ -31,7 +31,7 @@ def download_video(ydl, url):
 clean_cookie()		
 
 print('Checking for home folder...')
-songsFolder = os.getcwd() + "\\songs"
+songsFolder = os.path.join(os.getcwd(), "Songs")
 time.sleep (0.5)
 if os.path.exists(songsFolder):
 	print('Songs folder found\n')
@@ -59,7 +59,7 @@ if os.path.exists(songsFolder):
 		print('You must choose between 1-3. Try again')
 		exit()
 
-	homeFolder = os.path.abspath(os.getcwd() + "\\songs")
+	homeFolder = os.path.abspath(os.path.join(os.getcwd(), "Songs"))
 	os.chdir(homeFolder)
 	videoTitle = ''
 	i = 0
